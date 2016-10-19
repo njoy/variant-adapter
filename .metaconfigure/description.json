@@ -1,12 +1,12 @@
 {
+"implementation_files": [],
+"target": "include",
+"name": "variant-adapter",
+"header_files": [],
+"include_path": "src",
+"language_revision": "C++14",
+"language": "c++",
 "version": "0.0.1",
 "is_external_project": true,
-"language": "c++",
-"unit_tests": {},
-"target": "include",
-"implementation_files": [],
-"language_revision": "C++14",
-"name": "variant-adapter",
-"include_path": "src",
-"header_files": []
+"unit_tests": {}
 }
