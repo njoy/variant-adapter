@@ -1,0 +1,35 @@
+{
+  "file extension": {
+    "header files": [
+      "h++",
+      "hxx",
+      "hpp",
+      "hh",
+      "h"
+    ],
+    "implementation files": [
+      "c++",
+      "cxx",
+      "cpp",
+      "cc"
+    ]
+  },
+  "header files": ["src/variant"],
+  "ignore pattern": "$^",
+  "implementation files": [],
+  "include path": "src",
+  "initialized": true,
+  "is external project": true,
+  "language": "c++",
+  "name": "variant-adapter",
+  "standard": "c++14",
+  "standards": [
+    "c++98",
+    "c++11",
+    "c++14"
+  ],
+  "strict": true,
+  "test pattern": "test$",
+  "tests": {},
+  "update": false
+}
