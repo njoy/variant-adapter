@@ -643,25 +643,25 @@ union __variant_data<_Head,_Rest...>{
 
     template<typename ... _Args>
     constexpr __variant_data(in_place_index_t<0>,_Args&& ... __args):
-        __head(in_place<0>,std::forward<_Args>(__args)...){}
+        __head(in_place<size_t{0}>,std::forward<_Args>(__args)...){}
     template<size_t _Index,typename ... _Args>
     constexpr __variant_data(in_place_index_t<_Index>,_Args&& ... __args):
         __rest(in_place<_Index-1>,std::forward<_Args>(__args)...){}
 
     _Head& __get(in_place_index_t<0>){
-        return __head.__get(in_place<0>);
+        return __head.__get(in_place<size_t{0}>);
     }
 
     constexpr _Head&& __get_rref(in_place_index_t<0>){
-        return __head.__get_rref(in_place<0>);
+        return __head.__get_rref(in_place<size_t{0}>);
     }
 
     constexpr const _Head& __get(in_place_index_t<0>) const{
-        return __head.__get(in_place<0>);
+        return __head.__get(in_place<size_t{0}>);
     }
 
     constexpr const _Head&& __get_rref(in_place_index_t<0>) const{
-        return __head.__get_rref(in_place<0>);
+        return __head.__get_rref(in_place<size_t{0}>);
     }
 
     template<size_t _Index>
@@ -690,7 +690,7 @@ union __variant_data<_Head,_Rest...>{
 
 
     void __destroy(in_place_index_t<0>){
-        __head.__destroy(in_place<0>);
+        __head.__destroy(in_place<size_t{0}>);
     }
     template<size_t _Index>
     void __destroy(in_place_index_t<_Index>){
@@ -1608,12 +1608,12 @@ class variant:
     void __two_stage_replace(_Args&& ... __args){
         typedef typename __indexed_type<_Index,_Types...>::__type __type;
         __variant_data<__type> __local(
-            in_place<0>,std::forward<_Args>(__args)...);
+            in_place<size_t{0}>,std::forward<_Args>(__args)...);
         __destroy_self();
         __emplace_construct<_Index>(
-            std::move(__local.__get(in_place<0>)));
+            std::move(__local.__get(in_place<size_t{0}>)));
         __index=_Index;
-        __local.__destroy(in_place<0>);
+        __local.__destroy(in_place<size_t{0}>);
     }
 
     template<size_t _Index,typename ... _Args>
@@ -1636,7 +1636,7 @@ class variant:
 public:
     constexpr variant()
         noexcept(noexcept(typename __indexed_type<0,_Types...>::__type())):
-        __storage(in_place<0>),
+        __storage(in_place<size_t{0}>),
         __index(0)
     {}
 
@@ -1703,7 +1703,7 @@ public:
 
     template<typename _Alloc>
     variant(std::allocator_arg_t ,_Alloc const& __alloc):
-        __storage(in_place<0>,std::allocator_arg_t(),__alloc),
+        __storage(in_place<size_t{0}>,std::allocator_arg_t(),__alloc),
         __index(0)
     {}
 
