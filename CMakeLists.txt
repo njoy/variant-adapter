@@ -34,5 +34,12 @@ message( STATUS "" )
 message( STATUS "-----------------------------------------------------------" )
 
 add_library( variant-adapter INTERFACE )
-target_sources( variant-adapter INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/src/variant" )              
-target_include_directories( variant-adapter INTERFACE src )
+target_include_directories( variant-adapter INTERFACE . )
+target_sources( variant-adapter INTERFACE
+"${CMAKE_CURRENT_SOURCE_DIR}/src/include/mpark/config.hpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/src/include/mpark/in_place.hpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/src/include/mpark/lib.hpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/src/include/mpark/variant.hpp"
+"${CMAKE_CURRENT_SOURCE_DIR}/variant")
+
+# add_subdirectory(test)

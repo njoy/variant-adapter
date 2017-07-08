@@ -1,0 +1,13 @@
+#ifndef __VARIANT__
+#define __VARIANT__
+
+#include "src/include/mpark/variant.hpp"
+
+namespace std {
+namespace experimental {
+
+using namespace mpark;
+
+}
+}
+#endif
